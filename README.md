@@ -1,2 +1,2 @@
 # Youtube-caption-and-vedio
-It's need submit for the video id.
+It's need submit video id.
