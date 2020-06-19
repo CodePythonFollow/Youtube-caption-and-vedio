@@ -23,6 +23,8 @@ class Deal_caption():
 
         fi.close()
         fo.close()
+        # 修改完成后删除
+        os.remove(file_name)
 
 
    
