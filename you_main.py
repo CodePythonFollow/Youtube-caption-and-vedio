@@ -57,7 +57,13 @@ if __name__ == '__main__':
 
     # 下载所有视频
     download_all_page()
-    
+
+    # 删除默认下载的srt文件
+    dir_files = os.listdir('./')
+    for file in dir_files:
+        if '.srt' in file:  
+            os.remove(file)
+
     # caption_download
     get_caption(datas)
 
