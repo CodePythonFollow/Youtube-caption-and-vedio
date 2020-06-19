@@ -1,6 +1,7 @@
 import os, re
 from multiprocessing import Process, Pool   
-from en_zh import Youtube_language                                 
+from en_zh_captiondownload import Youtube_language
+from youtube_caption_deal import Deal_caption                                
 
 def download_page(data):
     print(data)
@@ -28,8 +29,20 @@ def get_caption(datas):
             print(e)
             continue
 
+# 处理字幕文件
+def deal_caption():
+    dir_name = './'
+    list_dir = os.listdir(dir_name)
+    
+    for file in list_dir:
+        if '.srt' in file:
+            print(dir_name + file)
+            deal_caption = Deal_caption() 
+            deal_caption.replace_srt(dir_name + file)
+
         
 if __name__ == '__main__':
+    # 传入数据，可以写成链接
     datas = [
         '/watch?v=xFciV6Ew5r4&list=PL-osiE80TeTt66h8cVpmbayBKlMTuS55y&index=1',
         '/watch?v=xqcTfplzr7c&list=PL-osiE80TeTt66h8cVpmbayBKlMTuS55y&index=2',
@@ -41,7 +54,14 @@ if __name__ == '__main__':
         '/watch?v=06I63_p-2A4&list=PL-osiE80TeTt66h8cVpmbayBKlMTuS55y&index=8',
         '/watch?v=-nh9rCzPJ20&list=PL-osiE80TeTt66h8cVpmbayBKlMTuS55y&index=9'
     ]
+
+    # 下载所有视频
     download_all_page()
+    
+    # caption_download
     get_caption(datas)
+
+    # deal_caption 
+    deal_caption()
 
 
