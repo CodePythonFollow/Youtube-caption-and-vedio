@@ -35,10 +35,10 @@ def deal_caption():
     list_dir = os.listdir(dir_name)
     
     for file in list_dir:
-        if '.srt' in file:
-            print(dir_name + file)
+        if '.srt' in file: 
             deal_caption = Deal_caption() 
             deal_caption.replace_srt(dir_name + file)
+            print(f'{file}下载完成')
 
         
 if __name__ == '__main__':
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     # 删除默认下载的srt文件
     dir_files = os.listdir('./')
     for file in dir_files:
-        if '.srt' in file:  
+        if '.srt' in file and '.mp4' not in file:    
             os.remove(file)
 
     # caption_download
